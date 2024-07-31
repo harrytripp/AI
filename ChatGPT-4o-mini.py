@@ -24,11 +24,16 @@ while i == 1:
   )
     firstMessage = False
   else:
-    message = client.beta.threads.messages.create(
-    thread_id=thread.id,
-    role="user",
-    content=input()
-  )
+    # The Message must not be empty - this prevents sending an invalid request.
+    userInput = ""
+    while userInput == "":
+      userInput = input()
+    if userInput != "":
+      message = client.beta.threads.messages.create(
+      thread_id=thread.id,
+      role="user",
+      content = userInput
+    )
 
   from typing_extensions import override
   from openai import AssistantEventHandler
