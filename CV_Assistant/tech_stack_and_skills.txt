@@ -1,0 +1,12 @@
+Core: Windows Server, Microsoft Configuration Manager, Active Directory, Group Policy, Veeam, Microsoft 365 Admin, Sophos, Hyper-V, JAMF Apple MDM management, ChromeOS device management, TeamViewer, 3CX Phone System, CCTV
+
+Networking: DNS, DHCP, HPE Aruba CX Switches, Smoothwall Web Filter, Synology NAS,
+Cloudflare DNS
+
+Azure: EntraID, Blob, CDN, Intune, IAM, AZ-900 Microsoft Azure Fundamentals Certification
+
+Google Cloud Platform: Google Admin, GAM
+
+Dev Tools: Github, VS Code, CI/CD
+
+Languages: Ruby, YAML, Bicep, PowerShell
