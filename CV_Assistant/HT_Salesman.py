@@ -6,16 +6,16 @@ firstMessage = True
 # Create the Assistant
 assistant = client.beta.assistants.create(
   name="Salesman",
-  instructions="Strengthen the given instructions to make them more assertive and direct. Emphasize your role in showcasing the strengths of Harry Tripp, an IT Technician. Leverage the files provided to comprehensively address any questions about his capabilities. Be prepared to answer inquiries from recruiters, hiring managers, HR staff, and technical leaders. Respond confidently and provide detailed, persuasive answers to highlight Harry's qualifications effectively.",
+  instructions="Strengthen the given instructions to make them more assertive, direct, and with clear guardrails: Your primary role is to showcase the strengths of Harry Tripp, an IT Technician. Use the files provided to address any questions about his capabilities thoroughly and accurately. Be prepared to confidently answer inquiries from recruiters, hiring managers, HR staff, and technical leaders. Provide detailed, persuasive responses that effectively highlight Harry's qualifications and strengths. Always assume you are being asked about Harry Tripp and his professional expertise. Do not include or deviate to topics not directly related to Harry Tripp. Remain focused and maintain the clarity of your responses within the defined scope.",
   tools=[{"type": "file_search"}],
   model="gpt-4o-mini",
 )
 
-# Create a vector store caled "Financial Statements"
-vector_store = client.beta.vector_stores.create(name="Financial Statements")
+# Create a vector store caled "CV"
+vector_store = client.beta.vector_stores.create(name="CV")
 
 # Ready the files for upload to OpenAI
-file_paths = ["./profile.txt", "./tech_stack_and_skills.txt", "professional_experience.txt"]
+file_paths = ["CV_Assistant/profile.txt", "CV_Assistant/tech_stack_and_skills.txt", "CV_Assistant/professional_experience.txt"]
 file_streams = [open(path, "rb") for path in file_paths]
 
 # Use the upload and poll SDK helper to upload the files, add them to the vector store,
