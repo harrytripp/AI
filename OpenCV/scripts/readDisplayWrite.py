@@ -1,7 +1,7 @@
 import cv2 as cv
 import sys
  
-img = cv.imread("/home/harry/Dev/Python/OpenCV/samples/starry_night.jpg")
+img = cv.imread("OpenCV/scripts/samples/starry_night.jpg")
  
 if img is None:
     sys.exit("Could not read the image.")
