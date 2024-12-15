@@ -1,7 +1,7 @@
 import cv2 as cv
 import sys
  
-img = cv.imread("OpenCV/scripts/samples/starry_night.jpg")
+img = cv.imread("/app/images/starry_night.jpg") # correct path for Docker container
  
 if img is None:
     sys.exit("Could not read the image.")

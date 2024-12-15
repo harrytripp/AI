@@ -5,10 +5,21 @@ FROM python:3.13.1-slim
 WORKDIR /app
 
 # Install system dependencies required for OpenCV and video device support
-RUN apt-get update && apt-get install python3-opencv ffmpeg libsm6 libxext6 libgl1-mesa-glx libglib2.0-0 v4l-utils -y
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3-opencv \
+        ffmpeg \
+        libsm6 \
+        libxext6 \
+        libgl1-mesa-glx \
+        libglib2.0-0 \
+        v4l-utils \
+        libgtk2.0-dev \
+        pkg-config && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install OpenCV using the headless version
-RUN pip install opencv-contrib-python-headless
+RUN pip install opencv-contrib-python
 
 # Copy the current directory contents into the container at /app
 COPY . /app
@@ -30,6 +41,12 @@ RUN chmod +x /entrypoint.sh
 
 # Use the entrypoint script
 ENTRYPOINT ["/entrypoint.sh"]
+
+# Create a directory for images (optional but good practice)
+RUN mkdir /app/images
+
+# Copy images into the container: copies the 'images' directory and its contents
+COPY scripts/images/ /app/images
 
 # Default command to run your application
 CMD ["python", "scripts/readDisplayWrite.py"]
