@@ -42,11 +42,11 @@ RUN chmod +x /entrypoint.sh
 # Use the entrypoint script
 ENTRYPOINT ["/entrypoint.sh"]
 
-# Create a directory for images (optional but good practice)
-RUN mkdir /app/images
+# Create directories for input and output images
+RUN mkdir -p /app/images /app/imageOutput
 
 # Copy images into the container: copies the 'images' directory and its contents
 COPY scripts/images/ /app/images
 
 # Default command to run your application
-CMD ["python", "scripts/readDisplayWrite.py"]
+CMD ["python", "scripts/readWrite.py"]
